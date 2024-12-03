@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service
+spec:
+  selector:
+    app: nodejs # This specifies which pods the service will route traffic to
+  ports:
+    - protocol: TCP
+      port: 80 # The external port exposed to the outside
+      targetPort: 8080 # The application port inside the pod
+  type: NodePort # We are using NodePort for Minikube

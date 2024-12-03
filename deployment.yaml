@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+spec:
+  replicas: 2 # create 2 replica
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: nodejs
+          image: sertaslan/nodejs-k8s-demo:latest # Your Docker Hub image
+          ports:
+            - containerPort: 8080
